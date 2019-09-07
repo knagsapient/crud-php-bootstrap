@@ -33,6 +33,9 @@ if (isset($_POST['btn_save'])) {
             }
         } else {
             if ($objUser->insert($name, $email)) {
+                if(!empty($_FILES)){
+                     $objUser->uploads3($_FILES);   
+                }
                 $objUser->redirect('index.php?inserted');
             } else {
                 $objUser->redirect('index.php?error');
@@ -59,7 +62,7 @@ if (isset($_POST['btn_save'])) {
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                     <h1 style="margin-top: 10px">DataTable</h1>
                     <p>Required fields are in (*).</p>
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="id">ID</label>
                             <input type="text" class="form-control" id="id" name="id" readonly value="<?php print($rowUser['id']); ?>">
@@ -71,7 +74,11 @@ if (isset($_POST['btn_save'])) {
                         <div class="form-group">
                             <label for="email">Email address *</label>
                             <input type="email" class="form-control" id="email" name="email" value="<?php print($rowUser['email']); ?>" placeholder="name@example.com" required maxlength="100">
-                        </div>  
+                        </div>
+                         <div class="form-group">
+                            <label for="exampleFormControlFile1">Example file input</label>
+                            <input type="file" class="form-control-file" name="fileToUpload" id="exampleFormControlFile1">
+                          </div>
                         <input type="submit" name="btn_save" class="btn btn-primary mb-2" value="Save">
                     </form>
                 </main>
