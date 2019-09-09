@@ -62,8 +62,8 @@ class User {
 
     public function uploads3($files) {
             $bucketName = 'crud-app-sapient-test';
-            $IAM_KEY = 'AKIAVCJIFS7IYU4MIDOZ';
-            $IAM_SECRET = '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';
+            $IAM_KEY = 'XXXXX';
+            $IAM_SECRET = 'XXXXX';
     // Connect to AWS
             try {
                 // You may need to change the region. It will say in the URL when the bucket is open
